@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmii ❤️ Shehr Bano</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: black;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .screen {
+            height: 100vh;
+            width: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            transition: 0.5s ease;
+        }
+
+        .bg1 {
+            background: linear-gradient(90deg, #ffebff, #bd39b6, #ff0055);
+        }
+
+        .bg2 {
+            background: #ffb6d5;
+        }
+
+        .bg3 {
+            background: #ff9ecf;
+        }
+
+        .bg4 {
+            background: #ffc4d6;
+        }
+
+        .btn {
+            background-color: rgb(240, 0, 156);
+            height: 7vh;
+            width: 180px;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: white 4px 4px 5px 2px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            font-size: 20px;
+            z-index: 20;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: rgb(219, 10, 115);
+            box-shadow: rgb(219, 10, 115) 4px 4px 5px 2px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        .loveText {
+            color: #ff0066;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .hearts,
+        .stars,
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart,
+        .star,
+        .sparkle {
+            position: absolute;
+            animation-timing-function: linear;
+        }
+
+        .heart {
+            color: #ff007f;
+            font-size: 25px;
+            animation: fall 4s infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .star {
+            color: #ffffffcc;
+            font-size: 14px;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            color: #ffe8f8;
+            font-size: 18px;
+            animation: sparkleAnim 2.5s infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: scale(0.6);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.6);
+                opacity: 0;
+            }
+        }
+
+        #floatingBubu {
+            position: fixed;
+            bottom: 6%;
+            right: -200px;
+            height: 150px;
+            animation: floatAcross 12s linear infinite;
+            z-index: 3;
+        }
+
+        @keyframes floatAcross {
+            0% {
+                right: -200px;
+            }
+
+            100% {
+                right: 120%;
+            }
+        }
+
+        #typeText {
+            color: #ff0066;
+            font-size: 2rem;
+            text-align: center;
+            width: 90%;
+            min-height: 120px;
+        }
+
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 0 25px #ff007f;
+            z-index: 50;
+            transition: 0.3s ease;
+        }
+
+        #popup.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #screen6 {
+            display: none;
+            background: black;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #finalImage {
+            height: 250px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #ff0099;
+        }
+
+        #lyrics {
+            color: #ff66cc;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 0 0 15px #ff0099;
+            line-height: 1.5;
+            width: 90%;
+        }
+
+        .glow {
+            animation: glowAnim 1.5s infinite;
+            color: #ff66cc;
+            text-shadow: 0 0 10px #ff0099, 0 0 20px #ff0099;
+        }
+
+        @keyframes glowAnim {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        #finalBtn {
+            background-color: rgb(240, 0, 156);
+            height: 7vh;
+            width: 180px;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: white 4px 4px 5px 2px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            font-size: 20px;
+        }
+
+        #finalBtn:hover {
+            background-color: white;
+            color: rgb(219, 10, 115);
+            box-shadow: rgb(219, 10, 115) 4px 4px 5px 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hearts" id="hearts"></div>
+    <div class="stars" id="stars"></div>
+    <div class="sparkles" id="sparkles"></div>
+    <img id="floatingBubu" src="https://i.pinimg.com/originals/d0/e5/45/d0e5451273c83ccf1abe71c366c08b63.gif">
+
+    <!-- Screens -->
+    <div class="screen bg1" id="screen1" style="display:flex;">
+        <img style="height:140px;" src="https://gifdb.com/images/high/bubu-dudu-smiling-0rkqi6qkikk9tsk0.webp">
+        <h1 style="color:white;">Shehr Bano... Warning!? Don't Press The Button!</h1>
+        <button class="btn" id="next1">Next</button>
+    </div>
+
+    <div class="screen bg2" id="screen2">
+        <img src="https://gifdb.com/images/high/bubu-dudu-kiss-on-the-wall-1o5zknnn4l42vupr.webp" style="height:200px;">
+        <h1 class="loveText">Hehe you pressed it 😘<br>Don't press again, Shehr Bano...</h1>
+        <button class="btn" id="next2">Next</button>
+    </div>
+
+    <div class="screen bg3" id="screen3">
+        <img src="https://gifdb.com/images/high/cute-sad-bubu-dudu-panda-kick-4cn5usy9xip1m59y.webp"
+            style="height:200px;">
+        <h1 class="loveText">Ayyye again?? 😭💗<br>I know you can't resist, meri Shehru...</h1>
+        <button class="btn" id="next3">Next</button>
+    </div>
+
+    <div class="screen bg4" id="screen4">
+        <img src="https://gifdb.com/images/high/baby-bubu-big-hug-dudu-argg7fjkegcv6xdc.webp" style="height:200px;">
+        <h1 class="loveText">Okay fine 😤💗<br>This is the LAST button, Shehr Bano.<br>Press to see Ahmii’s gift 🎁💞
+        </h1>
+        <button class="btn" id="next4">Last Button</button>
+    </div>
+
+    <div class="screen bg2" id="screen5">
+        <img src="https://i.pinimg.com/originals/ae/f5/00/aef5000829c04e91f0259d58727459a3.gif" style="height:240px;">
+        <h1 id="typeText"></h1>
+        <button class="btn" id="popupBtn">Open Surprise 💝</button>
+    </div>
+
+    <div id="popup">
+        <h2 style="color:#ff007f; font-size:2rem;">For Shehr Bano 💖</h2>
+        <p style="font-size:1.2rem; margin-top:10px;">
+            From the day you came into my life,<br>everything became softer, sweeter, and more beautiful.<br><br>
+            I love you endlessly, <b>—Your Ahmii 🐻💞</b>
+            <button id="finalBtn">Just For You 💖</button>
+        </p>
+    </div>
+
+    <div class="screen" id="screen6">
+        <iframe id="myAudio" src="https://www.tiktok.com/@muselyrica/video/7292754094928743685" width="0" height="0" frameborder="0" allow="autoplay"></iframe>
+
+        <img id="finalImage" src="WhatsApp Image 2025-11-24 at 15.42.58_50de4684.jpg">
+        <div id="lyrics"></div>
+        <!-- <h1 class="glow">Shehr Bano… تم میری دنیا ہو 💗<br>—Ahmii</h1> -->
+    </div>
+
+    <script>
+        function goTo(next, current) { document.getElementById(current).style.display = "none"; document.getElementById(next).style.display = "flex"; }
+        next1.onclick = () => goTo("screen2", "screen1");
+        next2.onclick = () => goTo("screen3", "screen2");
+        next3.onclick = () => goTo("screen4", "screen3");
+        next4.onclick = () => goTo("screen5", "screen4");
+
+        let msg = "Shehr Bano... 💗\nYou are the softness in Ahmii’s heart...\nThe reason he smiles...\nAnd the girl he loves the MOST in this world 💞";
+        let i = 0;
+        function typeWriter() { if (i < msg.length) { document.getElementById("typeText").innerHTML += msg.charAt(i); i++; setTimeout(typeWriter, 40); } }
+        setTimeout(typeWriter, 700);
+
+        popupBtn.onclick = () => {
+            let popup = document.getElementById("popup");
+            popup.classList.add("show");
+            setTimeout(() => {
+                document.getElementById("finalBtn").onclick = () => {
+                    popup.classList.remove("show");
+                    goTo("screen6", "screen5");
+                    startFinalLyrics();
+                }
+            }, 200);
+        };
+
+        /* Hearts, stars, sparkles omitted for brevity; same as previous code */
+
+        let finalLyrics = ["Tum S Koi Piyara Koi Masoom Nahi h ", "Kia Cheez Ho Tum Khud Tumhe Maloom Nahi H"];
+        let currLine = 0;
+        function startFinalLyrics() {
+            let lyricsDiv = document.getElementById("lyrics"); lyricsDiv.innerHTML = "";
+            function typeLine() {
+                if (currLine < finalLyrics.length) {
+                    let words = finalLyrics[currLine].split(" ");
+                    let i = 0;
+                    let interval = setInterval(() => {
+                        if (i < words.length) { lyricsDiv.innerHTML += words[i] + " "; i++; } else { clearInterval(interval); lyricsDiv.innerHTML += "<br>"; currLine++; setTimeout(typeLine, 400); }
+                    }, 400);
+                } else { setTimeout(() => { location.reload(); }, 4000); }
+            }
+            typeLine();
+        }
+        // Get the audio element
+
+        let audio = document.getElementById("myAudio");
+        let btnnn = document.getElementById("finalBtn");
+btnnn.addEventListener("click",function () {
+        audio.play();
+    
+})
+
+    </script>
+</body>
+
+</html>
